@@ -94,7 +94,7 @@ def login():
             if old_session_id != new_session_id:
                 # Update any Shopping_cart rows that are associated with the old session ID.
                 db.execute(
-                    'UPDATE Shopping_cart SET SessionID = ? WHERE SessionID = ?',
+                    'UPDATE Shopping_cart SET ShopperID = ? WHERE ShopperID = ?',
                     (new_session_id, old_session_id)
                 )
                 # Update the Authentication table with the new session ID.

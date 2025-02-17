@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Authentication (
 );
 
 CREATE TABLE IF NOT EXISTS Shopping_cart (
-    SessionID TEXT PRIMARY KEY,
+    ShopperID TEXT PRIMARY KEY,
     ProductID INTEGER NOT NULL,
     Quantity INTEGER NOT NULL DEFAULT 1,
     AddedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -18,5 +18,5 @@ CREATE TABLE IF NOT EXISTS Shopping_cart (
 
 -- Adds a new employee whose ID is 999999, first and last names are "WEB"
 -- This employee is used to represent the web application itself
-INSERT INTO Employees (EmployeeID, LastName, FirstName)
+INSERT OR IGNORE INTO Employees (EmployeeID, LastName, FirstName)
 VALUES (999999, "WEB", "WEB");

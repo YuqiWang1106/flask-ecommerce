@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('products.list_products') }}">Home</a></li>
-		<li><a href="#">Cart</a></li>
+                <li><a href="{{ url_for('cart.view_cart') }}">Cart</a></li>
                 <li><a href="#">Orders</a></li>
                 <li><a href="{{ url_for('user.register') }}">Register</a>
                 <li><a href="{{ url_for('user.login') }}">Log In</a></li>

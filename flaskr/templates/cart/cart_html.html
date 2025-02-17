@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Your Shopping Cart</h1>
+
+  <!-- If there are items, display them in a table -->
+  {% if items %}
+    <table border="1" cellpadding="8" cellspacing="0">
+      <tr>
+        <th>Product ID</th>
+        <th>Quantity</th>
+        <th>Added At</th>
+        <th>Remove</th>
+      </tr>
+      {% for item in items %}
+        <tr>
+          <td>{{ item.product_id }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.timestamp }}</td>
+          <td>
+            <!-- Remove form: posts to /cart/remove/ -->
+            <form action="{{ url_for('cart.remove_from_cart') }}" method="POST" style="display:inline;">
+              <input type="hidden" name="product_id" value="{{ item.product_id }}">
+              <button type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+
+  <hr>
+
+  <!-- Form to ADD a product to the cart -->
+  <h2>Add a Product to the Cart</h2>
+  <form action="{{ url_for('cart.add_to_cart') }}" method="POST">
+    <label for="product_id">Product ID:</label>
+    <input type="number" name="product_id" id="product_id" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" min="1" value="1">
+
+    <button type="submit">Add</button>
+  </form>
+
+  <hr>
+
+  <!-- Link or button to proceed to checkout -->
+  <a href="{{ url_for('cart.checkout') }}">Proceed to Checkout</a>
+
+{% endblock %}

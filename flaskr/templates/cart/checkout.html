@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Checkout</h1>
+
+  <p>Please confirm your order. (Typically you'd show cart summary or shipping address here.)</p>
+  
+  <!-- The user can place the order or cancel back to the cart -->
+  <form action="" method="POST">
+    <!-- "place_order" is the name your code checks with request.form.get('place_order') -->
+    <button type="submit" name="place_order" value="yes">Place Order</button>
+  </form>
+
+  <br>
+  <a href="{{ url_for('cart.view_cart') }}">Cancel and Return to Cart</a>
+
+  <!-- We might show a summary of the cart items here, or just rely on the user having seen them earlier. -->
+
+  <!-- Shipping Info Form -->
+  <form action="" method="POST">
+    <div>
+      <label for="ship_name">Name:</label>
+      <input type="text" id="ship_name" name="ship_name" required>
+    </div>
+    <div>
+      <label for="ship_address">Address:</label>
+      <input type="text" id="ship_address" name="ship_address" required>
+    </div>
+    <div>
+      <label for="ship_city">City:</label>
+      <input type="text" id="ship_city" name="ship_city" required>
+    </div>
+    <div>
+      <label for="ship_region">Region/State:</label>
+      <input type="text" id="ship_region" name="ship_region">
+    </div>
+    <div>
+      <label for="ship_postal_code">Postal Code:</label>
+      <input type="text" id="ship_postal_code" name="ship_postal_code">
+    </div>
+    <div>
+      <label for="ship_country">Country:</label>
+      <input type="text" id="ship_country" name="ship_country" required>
+    </div>
+    <br>
+    <!-- You might also want a shipping method or freight choice: -->
+    <label for="ship_via">Shipping Method:</label>
+    <select id="ship_via" name="ship_via">
+      <option value="1">Standard</option>
+      <option value="2">Express</option>
+      <option value="3">Overnight</option>
+    </select>
+    <br><br>
+
+    <!-- 
+      The "place_order" is the field your code checks 
+      (request.form.get('place_order')) to confirm the user wants to finalize 
+    -->
+    <button type="submit" name="place_order" value="true">Place Order</button>
+  </form>
+
+  <br>
+  <a href="{{ url_for('cart.view_cart') }}">Cancel and Return to Cart</a>
+{% endblock %}
