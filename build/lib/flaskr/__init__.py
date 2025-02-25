@@ -11,7 +11,7 @@ def create_app(test_config=None) -> Flask:
     db_path = "northwind.db" 
 
     app.config.from_mapping(
-        SECRET_KEY=os.getenv("SECRET_KEY", "dev"),
+        SECRET_KEY=os.getenv("SECRET_KEY", os.urandom(24).hex()),
         DATABASE=db_path if test_config is None else test_config["DATABASE"],  # ✅ 确保数据库可被 `pytest` 覆盖
         SQLALCHEMY_DATABASE_URI=f"sqlite:///{db_path}",
     )

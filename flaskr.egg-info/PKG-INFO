@@ -1,0 +1,7 @@
+Metadata-Version: 2.2
+Name: flaskr
+Version: 1.0.0
+Summary: A simple Flask e-commerce application
+Author-email: Your Name <your-email@example.com>
+Requires-Dist: flask
+Requires-Dist: waitress

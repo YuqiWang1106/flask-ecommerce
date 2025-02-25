@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flaskr"  # 你的项目名称，必须有
+version = "1.0.0"
+description = "A simple Flask e-commerce application"
+authors = [
+    { name = "Your Name", email = "your-email@example.com" }
+]
+dependencies = [
+    "flask",
+    "waitress"
+]
+
+[tool.setuptools.packages]
+find = { include = ["flaskr"] }  # 只包含 flaskr 目录
+
